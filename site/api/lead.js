@@ -1,5 +1,50 @@
 const nodemailer = require('nodemailer');
-const { getDatabase } = require('./_lib/mongodb');
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+function getSupabaseHeaders(extraHeaders = {}) {
+  return {
+    apikey: supabaseServiceRoleKey,
+    Authorization: `Bearer ${supabaseServiceRoleKey}`,
+    ...extraHeaders
+  };
+}
+
+async function getAuthenticatedUser(req) {
+  const authorization = req.headers.authorization || '';
+  const accessToken = authorization.startsWith('Bearer ')
+    ? authorization.slice('Bearer '.length).trim()
+    : '';
+
+  if (!accessToken) return null;
+
+  const response = await fetch(`${supabaseUrl}/auth/v1/user`, {
+    headers: {
+      apikey: supabaseServiceRoleKey,
+      Authorization: `Bearer ${accessToken}`
+    }
+  });
+
+  if (!response.ok) return null;
+  return response.json();
+}
+
+async function saveLead(lead) {
+  const response = await fetch(`${supabaseUrl}/rest/v1/leads`, {
+    method: 'POST',
+    headers: getSupabaseHeaders({
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal'
+    }),
+    body: JSON.stringify(lead)
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`Supabase lead insert failed: ${response.status} ${details}`);
+  }
+}
 
 function escapeHtml(s) {
   if (s == null) return '';
@@ -48,6 +93,16 @@ module.exports = async (req, res) => {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
+    if (!supabaseUrl || !supabaseServiceRoleKey) {
+      console.error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+      return res.status(503).json({ error: 'Lead service is not configured' });
+    }
+
+    const user = await getAuthenticatedUser(req);
+    if (!user) {
+      return res.status(401).json({ error: 'Please sign in before submitting a request' });
+    }
+
     const body = parseJsonSafe(req.body) || parseJsonSafe(req);
     if (!body) return res.status(400).json({ error: 'Invalid JSON payload' });
 
@@ -74,45 +129,38 @@ module.exports = async (req, res) => {
       phone,
       projectType,
       message,
-      createdAt: new Date()
+      user_id: user.id,
+      created_at: new Date().toISOString()
     };
 
-    const database = await getDatabase();
-    await database.collection('leads').insertOne(lead);
+    await saveLead(lead);
 
     const recipient = getRecipient();
-    if (!recipient) {
-      return res.status(503).json({ error: 'Email recipient not configured' });
-    }
-
     const smtpCfg = getSmtpConfigFromEnv();
-    if (!smtpCfg.host || !smtpCfg.auth.user || !smtpCfg.auth.pass) {
-      return res.status(503).json({ error: 'SMTP not configured' });
+
+    // Supabase is the required backend. Email notification is optional.
+    if (recipient && smtpCfg.host && smtpCfg.auth.user && smtpCfg.auth.pass) {
+      const transporter = nodemailer.createTransport(smtpCfg);
+      const html = `
+        <h2>New Lead</h2>
+        <table cellpadding="6">
+          <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
+          <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
+          <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
+          <tr><td><strong>Project Type</strong></td><td>${escapeHtml(projectType)}</td></tr>
+          <tr><td><strong>Message</strong></td><td>${escapeHtml(message)}</td></tr>
+          <tr><td><strong>Received At</strong></td><td>${lead.created_at}</td></tr>
+        </table>
+      `;
+
+      await transporter.sendMail({
+        from: getFrom(),
+        to: recipient,
+        subject: `Website Lead: ${name} — ${projectType}`,
+        text: `${name} (${email}, ${phone})\n\n${message}`,
+        html
+      });
     }
-
-    const transporter = nodemailer.createTransport(smtpCfg);
-
-    const html = `
-      <h2>New Lead</h2>
-      <table cellpadding="6">
-        <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
-        <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
-        <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
-        <tr><td><strong>Project Type</strong></td><td>${escapeHtml(projectType)}</td></tr>
-        <tr><td><strong>Message</strong></td><td>${escapeHtml(message)}</td></tr>
-        <tr><td><strong>Received At</strong></td><td>${lead.createdAt.toISOString()}</td></tr>
-      </table>
-    `;
-
-    const mailOptions = {
-      from: getFrom(),
-      to: recipient,
-      subject: `Website Lead: ${name} — ${projectType}`,
-      text: `${name} (${email}, ${phone})\n\n${message}`,
-      html
-    };
-
-    await transporter.sendMail(mailOptions);
 
     // Respond success — do NOT rely on local filesystem in serverless environment
     return res.status(200).json({ ok: true });

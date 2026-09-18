@@ -527,7 +527,7 @@
         const DEFAULT_SUBMIT_HTML = `<span>Send Proposal Request</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const submitBtn = document.getElementById('formSubmitBtn');
@@ -551,12 +551,26 @@
 
             const payload = { name, email, phone, projectType, message };
 
+            const supabase = window.CodeMintAuth;
+            const { data: { session } } = supabase
+                ? await supabase.auth.getSession()
+                : { session: null };
+
+            if (!session) {
+                alert('Your session has expired. Please sign in again.');
+                window.location.replace('login.html');
+                return;
+            }
+
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), 15000);
 
             fetch('/api/lead', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session.access_token}`
+                },
                 body: JSON.stringify(payload),
                 signal: controller.signal
             }).then(async (res) => {
