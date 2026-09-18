@@ -730,7 +730,6 @@
         return;
     }
 
-    sessionStorage.setItem('portfolio_unlocked', 'true');
 })();
 
 // -------------------------------------------------------------------------
@@ -741,7 +740,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            sessionStorage.removeItem('portfolio_unlocked');
             if (window.CodeMintAuth) window.CodeMintAuth.auth.signOut().catch(() => {});
             
             // Fade out the page nicely before redirecting

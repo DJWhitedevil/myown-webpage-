@@ -1,14 +1,17 @@
-// Supabase project URL and publishable anon key.
-// Never put the Supabase service-role key in this file or in frontend code.
+// Supabase project URL and browser-safe publishable key.
+// Find these in Supabase Dashboard -> Project Settings -> API.
+// Never put an `sb_secret_...`, `service_role`, or other secret key in this file.
 window.CodeMintSupabase = {
-    url: 'https://YOUR_PROJECT_REF.supabase.co',
-    anonKey: 'YOUR_SUPABASE_PUBLISHABLE_ANON_KEY'
+    url: 'https://gqyelvpyccrlzwzkrqzv.supabase.co',
+    publishableKey: 'sb_publishable_jhjXxCkLnLgtBVHfP8TyLg_f8pAp9pW'
 };
 
-if (window.supabase && !window.CodeMintSupabase.url.includes('YOUR_PROJECT_REF')) {
+if (window.supabase &&
+    !window.CodeMintSupabase.url.includes('YOUR_PROJECT_REF') &&
+    !window.CodeMintSupabase.publishableKey.includes('YOUR_PUBLISHABLE_KEY')) {
     window.CodeMintAuth = window.supabase.createClient(
         window.CodeMintSupabase.url,
-        window.CodeMintSupabase.anonKey,
+        window.CodeMintSupabase.publishableKey,
         { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
     );
 }

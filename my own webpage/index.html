@@ -31,6 +31,9 @@
 
 <body>
 
+    <!-- Motion Background Canvas -->
+    <canvas id="motionBg" style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;" aria-hidden="true"></canvas>
+
     <!-- Page Loader Overlay -->
     <div id="pageLoader">
         <div class="loader-logo">
@@ -94,7 +97,7 @@
             <div class="hero-container">
                 <h1 class="hero-title reveal-item">
                     Ship Your Website<br>
-                    <span class="hero-highlight">Launch Faster</span><br>
+                    <span class="hero-highlight" id="heroDynamicText">Launch Faster</span><br>
                     Go Online
                 </h1>
 
@@ -1052,7 +1055,7 @@
                     <h4>Subscribe to Tech Insights</h4>
                     <p>Get monthly tips on UI trends, page speed optimizations, and digital startup strategy.</p>
                     <form class="footer-newsletter-form" id="newsletterForm">
-                        <input type="email" placeholder="Your Email Address" aria-label="Newsletter email" required>
+                        <input type="email" name="newsletter-email" placeholder="Your Email Address" aria-label="Newsletter email" required>
                         <button type="submit" aria-label="Subscribe button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"

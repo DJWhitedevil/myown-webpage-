@@ -456,10 +456,11 @@
             return;
         }
 
-        if (sessionStorage.getItem('portfolio_unlocked') === 'true') {
-            window.location.replace('/');
-            return;
-        }
+        // A browser flag is not authentication. Only an active Supabase
+        // session may unlock the portfolio.
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) window.location.replace('/');
+        });
 
         const loginCard    = document.getElementById('loginCard');
         const registerCard = document.getElementById('registerCard');
@@ -512,7 +513,6 @@
                 const { error } = await supabase.auth.signInWithPassword({ email, password });
 
                 if (!error) {
-                    sessionStorage.setItem('portfolio_unlocked', 'true');
                     // Fade out then redirect
                     document.querySelector('.page').style.transition = 'opacity 0.4s ease';
                     document.querySelector('.page').style.opacity    = '0';
