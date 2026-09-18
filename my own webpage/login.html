@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CodeMint</title>
+    <meta name="description" content="Sign in to access the CodeMint portfolio.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Reset & base ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #EDE7DE;
+            --surface:      #EDE7DE;
+            --surface-soft: #F2ECE4;
+            --text:         #3a3328;
+            --text-muted:   #746b61;
+            --accent:       #aa8fbd;   /* lavender */
+            --sage:         #9caf91;
+            --peach:        #d49f8c;
+            --shadow-raise: 12px 12px 28px rgba(166,149,128,.35), -10px -10px 24px rgba(255,252,246,.85);
+            --shadow-inset: inset 4px 4px 10px rgba(166,149,128,.30), inset -4px -4px 10px rgba(255,252,246,.80);
+            --radius-pill:  999px;
+            --radius-card:  28px;
+            --font:         'Nunito', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Canvas motion background ──────────────────────────── */
+        #motionBg {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── Page layout ───────────────────────────────────────── */
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* ── Card ──────────────────────────────────────────────── */
+        .lc-card {
+            background: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-raise);
+            padding: 42px 38px 38px;
+            width: 100%;
+            max-width: 390px;
+            border: none;
+            animation: cardIn 0.45s cubic-bezier(.22,1,.36,1) both;
+        }
+
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0)    scale(1);    }
+        }
+
+        /* ── Brand ─────────────────────────────────────────────── */
+        .lc-brand {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        /* ── Titles ────────────────────────────────────────────── */
+        .lc-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+        .lc-subtitle {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+
+        /* ── Form ──────────────────────────────────────────────── */
+        .lc-form { margin-top: 24px; display: flex; flex-direction: column; }
+
+        .lc-field { margin-bottom: 14px; }
+
+        /* ── Inputs ────────────────────────────────────────────── */
+        .lc-input {
+            width: 100%;
+            display: block;
+            padding: 14px 20px;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: var(--surface);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 600;
+            outline: none;
+            box-shadow: var(--shadow-inset);
+            transition: box-shadow 200ms ease;
+        }
+        .lc-input::placeholder { color: #a39b90; font-weight: 500; }
+        .lc-input:focus {
+            box-shadow:
+                inset 5px 5px 12px rgba(166,149,128,.38),
+                inset -5px -5px 12px rgba(255,252,246,.88),
+                0 0 0 2.5px rgba(170,143,189,.28);
+        }
+        .lc-input:-webkit-autofill,
+        .lc-input:-webkit-autofill:focus {
+            -webkit-box-shadow: var(--shadow-inset), 0 0 0 1000px var(--surface) inset !important;
+            -webkit-text-fill-color: var(--text) !important;
+        }
+
+        /* ── Forgot row ────────────────────────────────────────── */
+        .lc-forgot-row {
+            text-align: right;
+            margin-bottom: 20px;
+            margin-top: -4px;
+        }
+
+        /* ── Links ─────────────────────────────────────────────── */
+        .lc-link {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 160ms;
+        }
+        .lc-link:hover { color: var(--accent); }
+        .lc-link-bold { color: var(--accent); font-weight: 800; }
+        .lc-link-bold:hover { color: #8a6da0; }
+
+        /* ── Primary button ────────────────────────────────────── */
+        .lc-btn {
+            width: 100%;
+            padding: 15px 28px;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: #b5a8d6;
+            color: #fff;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 4px;
+            box-shadow: 6px 6px 16px rgba(130,110,170,.30), -4px -4px 12px rgba(255,252,246,.70);
+            transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+        }
+        .lc-btn:hover {
+            transform: scale(1.025);
+            background: #a799cc;
+            box-shadow: inset 4px 4px 10px rgba(100,80,140,.22), inset -4px -4px 10px rgba(220,210,250,.28);
+        }
+        .lc-btn:active  { transform: scale(0.98); }
+        .lc-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        /* ── Toggle text ───────────────────────────────────────── */
+        .lc-toggle-text {
+            margin: 18px 0 0;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── Feedback messages ─────────────────────────────────── */
+        .lc-message {
+            margin-top: 14px;
+            padding: 11px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: inset 3px 3px 7px rgba(104,91,76,.13), inset -3px -3px 7px rgba(255,250,243,.65);
+        }
+        .lc-error   { background: rgba(238,216,206,.70); color: #b05040; }
+        .lc-success { background: rgba(197,212,190,.70); color: #3a6e50; }
+
+        /* ── Shake ─────────────────────────────────────────────── */
+        @keyframes lcShake {
+            0%,100% { transform: translateX(0); }
+            20%     { transform: translateX(-8px); }
+            40%     { transform: translateX( 8px); }
+            60%     { transform: translateX(-6px); }
+            80%     { transform: translateX( 6px); }
+        }
+        .lc-shake { animation: lcShake 0.42s ease both; }
+
+        /* ── Mobile ────────────────────────────────────────────── */
+        @media (max-width: 430px) {
+            .lc-card  { padding: 30px 22px 28px; border-radius: 22px; }
+            .lc-title { font-size: 1.45rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Motion Background Canvas -->
+    <canvas id="motionBg" aria-hidden="true"></canvas>
+
+    <div class="page">
+
+        <!-- ── LOGIN CARD ─────────────────────────────────────── -->
+        <div class="lc-card" id="loginCard">
+            <p class="lc-brand">CodeMint</p>
+            <h1 class="lc-title">Welcome back</h1>
+            <p class="lc-subtitle">Sign in to access the portfolio.</p>
+            <form id="loginForm" class="lc-form" novalidate>
+                <div class="lc-field">
+                    <input type="email" id="loginEmail" class="lc-input" placeholder="Email" required autocomplete="email">
+                </div>
+                <div class="lc-field">
+                    <input type="password" id="loginPassword" class="lc-input" placeholder="Password" required autocomplete="current-password">
+                </div>
+                <div class="lc-forgot-row">
+                    <a href="#" id="forgotPasswordLink" class="lc-link">Forgot Password?</a>
+                </div>
+                <button type="submit" id="loginSubmitBtn" class="lc-btn">
+                    <span>Sign In</span>
+                </button>
+                <div id="loginError" class="lc-message lc-error" style="display:none;"></div>
+                <p class="lc-toggle-text">
+                    Don't have an account?
+                    <a href="#" id="showRegisterBtn" class="lc-link lc-link-bold">Create one</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- ── REGISTER CARD ──────────────────────────────────── -->
+        <div class="lc-card" id="registerCard" style="display:none;">
+            <p class="lc-brand">CodeMint</p>
+            <h1 class="lc-title">Create Account</h1>
+            <p class="lc-subtitle">Join to access the portfolio.</p>
+            <form id="registerForm" class="lc-form" novalidate>
+                <div class="lc-field">
+                    <input type="text" id="regName" class="lc-input" placeholder="Full Name" required>
+                </div>
+                <div class="lc-field">
+                    <input type="tel" id="regPhone" class="lc-input" placeholder="Phone Number" required>
+                </div>
+                <div class="lc-field">
+                    <input type="email" id="regEmail" class="lc-input" placeholder="Email Address" required>
+                </div>
+                <div class="lc-field">
+                    <input type="password" id="regPassword" class="lc-input" placeholder="Create Password (12+ characters)" minlength="12" maxlength="128" required>
+                </div>
+                <button type="submit" id="regSubmitBtn" class="lc-btn">
+                    <span>Register</span>
+                </button>
+                <div id="registerError"   class="lc-message lc-error"   style="display:none;"></div>
+                <div id="registerSuccess" class="lc-message lc-success" style="display:none;"></div>
+                <p class="lc-toggle-text">
+                    Already have an account?
+                    <a href="#" id="showLoginBtn" class="lc-link lc-link-bold">Sign In</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- ── FORGOT PASSWORD CARD ───────────────────────────── -->
+        <div class="lc-card" id="forgotCard" style="display:none;">
+            <p class="lc-brand">CodeMint</p>
+            <h1 class="lc-title">Reset Password</h1>
+            <p class="lc-subtitle">Enter your email and we'll send a reset link.</p>
+            <form id="forgotForm" class="lc-form" novalidate>
+                <div class="lc-field">
+                    <input type="email" id="forgotEmail" class="lc-input" placeholder="Registered Email" required>
+                </div>
+                <button type="submit" id="forgotSubmitBtn" class="lc-btn">
+                    <span>Send Reset Link</span>
+                </button>
+                <div id="forgotError"   class="lc-message lc-error"   style="display:none;"></div>
+                <div id="forgotSuccess" class="lc-message lc-success" style="display:none;"></div>
+                <p class="lc-toggle-text">
+                    <a href="#" id="backToLogin" class="lc-link lc-link-bold">← Back to Sign In</a>
+                </p>
+            </form>
+        </div>
+
+    </div><!-- /.page -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script>
+    /* ================================================================
+       MOTION BACKGROUND — Claymorphism Blob & Particle Engine
+       ================================================================ */
+    (function motionBg() {
+        const canvas = document.getElementById('motionBg');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        const PALETTE = [
+            { r:212, g:200, b:226, a:0.55 },
+            { r:197, g:212, b:190, a:0.50 },
+            { r:238, g:216, b:206, a:0.52 },
+            { r:237, g:231, b:222, a:0.45 },
+            { r:180, g:195, b:170, a:0.42 },
+            { r:224, g:210, b:236, a:0.48 },
+        ];
+
+        let W, H;
+        const bgCanvas = document.createElement('canvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        
+        function resize() {
+            W = canvas.width  = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            
+            // Pre-render the static grid background once per resize
+            bgCanvas.width = W;
+            bgCanvas.height = H;
+            bgCtx.clearRect(0, 0, W, H);
+            bgCtx.fillStyle = 'rgba(180,165,148,0.055)';
+            const step = 12;
+            for (let gy=0; gy<H; gy+=step) {
+                for (let gx=0; gx<W; gx+=step) {
+                    if ((gx+gy)%(step*2)===0) { 
+                        bgCtx.beginPath(); bgCtx.arc(gx,gy,1,0,Math.PI*2); bgCtx.fill(); 
+                    }
+                }
+            }
+            buildScene();
+        }
+
+        class Blob {
+            constructor() { this.reset(); }
+            reset() {
+                const p = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+                this.color = p;
+                this.r  = W * (0.22 + Math.random() * 0.28);
+                this.x  = Math.random() * W;
+                this.y  = Math.random() * H;
+                this.vx = (Math.random() - 0.5) * 0.28;
+                this.vy = (Math.random() - 0.5) * 0.22;
+                this.bAmp   = this.r * (0.04 + Math.random() * 0.08);
+                this.bSpeed = 0.0005 + Math.random() * 0.0008;
+                this.bPhase = Math.random() * Math.PI * 2;
+                this.wAmp   = this.r * (0.05 + Math.random() * 0.10);
+                this.wSpeed = 0.0003 + Math.random() * 0.0005;
+                this.wPhase = Math.random() * Math.PI * 2;
+                this.t = Math.random() * 10000;
+            }
+            update(dt) {
+                this.t += dt;
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < -this.r * 0.5) this.x = W + this.r * 0.5;
+                if (this.x > W + this.r * 0.5) this.x = -this.r * 0.5;
+                if (this.y < -this.r * 0.5) this.y = H + this.r * 0.5;
+                if (this.y > H + this.r * 0.5) this.y = -this.r * 0.5;
+            }
+            draw() {
+                const cx = this.x + Math.sin(this.t * this.wSpeed + this.wPhase) * this.wAmp;
+                const cr = Math.max(10, this.r + Math.sin(this.t * this.bSpeed + this.bPhase) * this.bAmp);
+                const g  = ctx.createRadialGradient(cx, this.y, 0, cx, this.y, cr);
+                const {r,g:gv,b,a} = this.color;
+                g.addColorStop(0,   `rgba(${r},${gv},${b},${a})`);
+                g.addColorStop(0.5, `rgba(${r},${gv},${b},${a*0.55})`);
+                g.addColorStop(1,   `rgba(${r},${gv},${b},0)`);
+                ctx.beginPath(); ctx.arc(cx, this.y, cr, 0, Math.PI*2);
+                ctx.fillStyle = g; ctx.fill();
+            }
+        }
+
+        class Particle {
+            constructor() { this.spawn(); }
+            spawn() {
+                const p = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+                this.x = Math.random() * W; this.y = H + 10;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = -(0.25 + Math.random() * 0.55);
+                this.size = 2 + Math.random() * 4;
+                this.life = 0; this.maxLife = 280 + Math.random() * 220;
+                this.r = p.r; this.g = p.g; this.b = p.b;
+            }
+            update() {
+                this.life++; this.x += this.vx; this.y += this.vy;
+                if (this.life > this.maxLife || this.y < -20) this.spawn();
+            }
+            draw() {
+                const prog  = this.life / this.maxLife;
+                const alpha = prog < 0.15 ? prog/0.15*0.55 : (1-prog)*0.55;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${alpha})`; ctx.fill();
+            }
+        }
+
+        let blobs = [], particles = [];
+        function buildScene() {
+            blobs     = Array.from({length:7},  () => new Blob());
+            particles = Array.from({length:38}, () => new Particle());
+            particles.forEach(p => { p.y = Math.random()*H; p.life = Math.random()*p.maxLife; });
+        }
+
+        let lastTs = 0;
+        function render(ts) {
+            const dt = ts - lastTs; lastTs = ts;
+            ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = '#EDE7DE'; ctx.fillRect(0, 0, W, H);
+            ctx.globalCompositeOperation = 'source-over';
+            blobs.forEach(b => { b.update(dt); b.draw(); });
+            ctx.globalCompositeOperation = 'multiply';
+            ctx.drawImage(bgCanvas, 0, 0);
+            ctx.globalCompositeOperation = 'source-over';
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(render);
+        }
+
+        window.addEventListener('resize', resize, {passive:true});
+        resize();
+        requestAnimationFrame(render);
+    })();
+
+    /* ================================================================
+       AUTH LOGIC
+       ================================================================ */
+    (function auth() {
+        // If already logged in, go straight to portfolio
+        const supabase = window.CodeMintAuth;
+
+        if (!supabase) {
+            document.body.innerHTML = '<p style="padding:2rem;text-align:center">Supabase is not configured. Add your project URL and publishable anon key to supabase-config.js.</p>';
+            return;
+        }
+
+        if (sessionStorage.getItem('portfolio_unlocked') === 'true') {
+            window.location.replace('/');
+            return;
+        }
+
+        const loginCard    = document.getElementById('loginCard');
+        const registerCard = document.getElementById('registerCard');
+        const forgotCard   = document.getElementById('forgotCard');
+
+        // ── Card switchers ──────────────────────────────────────
+        function show(card) {
+            [loginCard, registerCard, forgotCard].forEach(c => {
+                c.style.display = 'none';
+            });
+            card.style.display = 'block';
+            // re-trigger animation
+            card.style.animation = 'none';
+            void card.offsetWidth;
+            card.style.animation = '';
+        }
+
+        document.getElementById('showRegisterBtn').addEventListener('click', e => { e.preventDefault(); show(registerCard); });
+        document.getElementById('showLoginBtn').addEventListener('click',    e => { e.preventDefault(); show(loginCard); });
+        document.getElementById('forgotPasswordLink').addEventListener('click', e => {
+            e.preventDefault();
+            // pre-fill email if typed
+            const em = document.getElementById('loginEmail').value.trim();
+            if (em) document.getElementById('forgotEmail').value = em;
+            show(forgotCard);
+        });
+        document.getElementById('backToLogin').addEventListener('click', e => { e.preventDefault(); show(loginCard); });
+
+        // ── Helper: shake card ──────────────────────────────────
+        function shake(card) {
+            card.classList.remove('lc-shake');
+            void card.offsetWidth;
+            card.classList.add('lc-shake');
+            setTimeout(() => card.classList.remove('lc-shake'), 450);
+        }
+
+        // ── LOGIN ───────────────────────────────────────────────
+        document.getElementById('loginForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const email    = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const errDiv   = document.getElementById('loginError');
+            const btn      = document.getElementById('loginSubmitBtn');
+
+            errDiv.style.display = 'none';
+            btn.disabled = true;
+            btn.innerHTML = '<span>Signing in…</span>';
+
+            try {
+                const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+                if (!error) {
+                    sessionStorage.setItem('portfolio_unlocked', 'true');
+                    // Fade out then redirect
+                    document.querySelector('.page').style.transition = 'opacity 0.4s ease';
+                    document.querySelector('.page').style.opacity    = '0';
+                    setTimeout(() => window.location.replace('/'), 420);
+                } else {
+                    throw new Error(error.message || 'Invalid credentials.');
+                }
+            } catch (err) {
+                errDiv.style.display = 'block';
+                errDiv.innerText = err.message;
+                document.getElementById('loginPassword').value = '';
+                shake(loginCard);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Sign In</span>';
+            }
+        });
+
+        // ── REGISTER ────────────────────────────────────────────
+        document.getElementById('registerForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const name     = document.getElementById('regName').value.trim();
+            const phone    = document.getElementById('regPhone').value.trim();
+            const email    = document.getElementById('regEmail').value.trim().toLowerCase();
+            const password = document.getElementById('regPassword').value;
+            const errDiv   = document.getElementById('registerError');
+            const sucDiv   = document.getElementById('registerSuccess');
+            const btn      = document.getElementById('regSubmitBtn');
+
+            errDiv.style.display = 'none';
+            sucDiv.style.display = 'none';
+            btn.disabled = true;
+            btn.innerHTML = '<span>Creating account…</span>';
+
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                    options: { data: { name, phone } }
+                });
+
+                if (!error) {
+                    sucDiv.style.display = 'block';
+                    sucDiv.innerText = data.session
+                        ? 'Account created! Redirecting to sign in…'
+                        : 'Account created. Check your email to confirm your account.';
+                    document.getElementById('registerForm').reset();
+                    if (data.session) setTimeout(() => show(loginCard), 1800);
+                } else {
+                    throw new Error(error.message || 'Registration failed.');
+                }
+            } catch (err) {
+                errDiv.style.display = 'block';
+                errDiv.innerText = err.message;
+                shake(registerCard);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Register</span>';
+            }
+        });
+
+        // ── FORGOT PASSWORD ─────────────────────────────────────
+        document.getElementById('forgotForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const email   = document.getElementById('forgotEmail').value.trim().toLowerCase();
+            const errDiv  = document.getElementById('forgotError');
+            const sucDiv  = document.getElementById('forgotSuccess');
+            const btn     = document.getElementById('forgotSubmitBtn');
+
+            errDiv.style.display = 'none';
+            sucDiv.style.display = 'none';
+            btn.disabled = true;
+            btn.innerHTML = '<span>Sending…</span>';
+
+            try {
+                const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                    redirectTo: `${window.location.origin}/reset-password.html`
+                });
+
+                if (!error) {
+                    sucDiv.style.display = 'block';
+                    sucDiv.innerText = 'Reset link sent! Check your email.';
+                    document.getElementById('forgotForm').reset();
+                } else {
+                    throw new Error(error.message || 'Could not send reset link.');
+                }
+            } catch (err) {
+                errDiv.style.display = 'block';
+                errDiv.innerText = err.message;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Send Reset Link</span>';
+            }
+        });
+
+    })();
+    </script>
+</body>
+</html>

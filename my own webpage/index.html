@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMint | Premium Freelance Web Developer & UI Designer</title>
+    <meta name="description"
+        content="Professional web development services for businesses, startups, and creators. I design and develop modern, ultra-fast, and responsive websites that drive results.">
+    <meta name="keywords"
+        content="web developer, freelance developer, premium portfolio, frontend developer, hire developer, react developer, business website, responsive website">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CodeMint | Premium Freelance Web Developer & UI Designer">
+    <meta property="og:description"
+        content="I build modern, premium, and professional website that help your business grow online. Let's collaborate.">
+    <meta property="og:image" content="images/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-neobrutalism.css">
+</head>
+
+<body>
+
+    <!-- Page Loader Overlay -->
+    <div id="pageLoader">
+        <div class="loader-logo">
+            <span class="logo-accent">CodeMint</span>
+        </div>
+        <div class="loader-bar-wrapper">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgressBar"></div>
+
+    <!-- Mobile Nav Overlay Backdrop -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar-header" id="navbarHeader">
+        <div class="nav-container">
+            <a href="#hero" class="logo" id="navLogo">
+                <span class="logo-accent">CodeMint</span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#about" class="nav-link" id="linkAbout">About</a></li>
+                    <li><a href="#services" class="nav-link" id="linkServices">Services</a></li>
+                    <li><a href="#portfolio" class="nav-link" id="linkPortfolio">Projects</a></li>
+                    <li><a href="#why-choose-me" class="nav-link" id="linkWhy">Why Me</a></li>
+                    <li><a href="#process" class="nav-link" id="linkProcess">Process</a></li>
+                    <li><a href="#contact" class="nav-link nav-btn" id="linkContact">Start a Project</a></li>
+                    <li><a href="#" class="nav-link" id="linkLogout"
+                            style="color: #b05040; margin-left: 0.5rem;">Logout</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <!-- Decorative Background Squares -->
+            <div class="hero-decor-square hero-decor-1" aria-hidden="true"></div>
+            <div class="hero-decor-square hero-decor-2" aria-hidden="true"></div>
+            <div class="hero-orb" aria-hidden="true">
+                <span class="hero-orb-ring hero-orb-ring-one"></span>
+                <span class="hero-orb-ring hero-orb-ring-two"></span>
+                <span class="hero-orb-core"></span>
+            </div>
+
+            <div class="hero-container">
+                <h1 class="hero-title reveal-item">
+                    Ship Your Website<br>
+                    <span class="hero-highlight">Launch Faster</span><br>
+                    Go Online
+                </h1>
+
+                <p class="hero-subtitle reveal-item">
+                    I design and develop modern, responsive, and user-friendly websites for businesses, startups, and
+                    creators. High performance met with pixel-perfect design.
+                </p>
+
+                <div class="hero-cta reveal-item">
+                    <a href="#portfolio" class="btn btn-primary" id="heroBtnPortfolio">
+                        <span>Portfolio </span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary" id="heroBtnContact">
+                        <span>Get Your Website</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section section-padding" id="about">
+            <div class="container">
+                <div class="grid grid-2">
+                    <!-- Left: Creative Dev Card -->
+                    <div class="about-card-wrapper reveal-item">
+                        <div class="about-card-bg"></div>
+                        <div class="about-card">
+                            <div class="about-card-header">
+                                <div class="about-avatar">
+                                </div>
+                                <div class="about-header-text">
+                                    <h3>Shubh Seth</h3>
+                                    <p>Freelance Web Developer & UI Designer</p>
+                                </div>
+                            </div>
+                            <div class="about-card-body">
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">UI/UX Design</span>
+                                    <span class="skill-tag">Webflow</span>
+                                    <span class="skill-tag">Custom CSS</span>
+                                    <span class="skill-tag">Optimization</span>
+                                </div>
+                                <div class="card-quote">
+                                    "I transform ideas into bespoke digital products that marry beautiful form with
+                                    exceptional function."
+                                </div>
+                                <div class="card-meta">
+                                    <div class="meta-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg>
+                                        <span>Remote / Worldwide</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <polyline points="12 6 12 12 16 14" />
+                                        </svg>
+                                        <span>1 Year Experience With Hands On practice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-card-wrapper reveal-item">
+                        <div class="about-card-bg"></div>
+                        <div class="about-card">
+                            <div class="about-card-header">
+                                <div class="about-avatar">
+                                </div>
+                                <div class="about-header-text">
+                                    <h3>Prince</h3>
+                                    <p>Freelance Web Developer</p>
+                                </div>
+                            </div>
+                            <div class="about-card-body">
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">Frontend Developer</span>
+                                    <span class="skill-tag">Webflow</span>
+                                    <span class="skill-tag">Custom CSS</span>
+                                    <span class="skill-tag">Optimization</span>
+                                </div>
+                                <div class="card-quote">
+                                    "Building modern websites that blend creativity, performance, and purpose."
+                                </div>
+                                <div class="card-meta">
+                                    <div class="meta-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg>
+                                        <span>Remote / Worldwide</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <polyline points="12 6 12 12 16 14" />
+                                        </svg>
+                                        <span>1 Year Experience With Hands On practice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="about-content reveal-item">
+                    <div class="section-tag">About Me</div>
+                    <h2 class="section-title">Code. Design. Deliver. Digital Excellence Without Compromise</h2>
+                    <p class="about-text">
+                        Hello! I'm Prince, a passionate freelance web developer dedicated to building clean, modern, and
+                        highly-optimized websites. I bridge the gap between creative visual design and bulletproof
+                        technical execution.
+                    </p>
+                    <p class="about-text">
+                        Whether you are an ambitious startup looking to make your mark, an established business wanting
+                        a custom digital tool, a college society looking for fresh web presence, or a creator wanting to
+                        showcase your craft—I build custom tailormade solutions that serve your business goals.
+                    </p>
+                    <p class="about-text">
+                        My philosophy is simple: <strong>No cheap templates. No sluggish page speeds. No boring
+                            layouts.</strong> Just sleek, high-performing websites built precisely for your brand.
+                    </p>
+
+                    <div class="about-points">
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <span>Collaborative and transparent approach</span>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <span>SEO & speed optimized from code to asset</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section section-padding" id="services">
+            <div class="container">
+                <div class="section-header text-center reveal-item">
+                    <span class="section-tag">My Services</span>
+                    <h2 class="section-title">Specialized Web Services Tailored to Your Needs</h2>
+                    <p class="section-subtitle">I provide comprehensive, modern web services designed to capture leads,
+                        rank high on search engines, and elevate your online brand.</p>
+                </div>
+
+                <div class="grid grid-3 services-grid">
+
+                    <!-- Service 1: Frontend Development -->
+                    <div class="service-card reveal-item" id="serviceFrontend">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                                <line x1="14" x2="10" y1="2" y2="22" />
+                            </svg>
+                        </div>
+                        <h3>Frontend Development</h3>
+                        <p>Bespoke interactive frontend development using React, Next.js, or vanilla JS. Blazing-fast
+                            page loads, neat component architecture, and beautiful responsive animations.</p>
+                        <ul class="service-bullets">
+                            <li>Component-driven structure</li>
+                            <li>Interactive user flows</li>
+                            <li>SEO-friendly static generation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2: Business Websites -->
+                    <div class="service-card reveal-item" id="serviceBusiness">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            </svg>
+                        </div>
+                        <h3>Business Websites</h3>
+                        <p>Professional websites tailored to established businesses and growing startups. Focused on
+                            representing your brand values, generating leads, and building corporate trust.</p>
+                        <ul class="service-bullets">
+                            <li>Domain & email integration</li>
+                            <li>Lead capture pipelines</li>
+                            <li>Easy Content Management (CMS)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3: Portfolio Websites -->
+                    <div class="service-card reveal-item" id="servicePortfolio">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h3>Portfolio Websites</h3>
+                        <p>Standout online portfolios for creators, artists, models, engineers, and designers.
+                            Engineered to highlight your works through immersive layouts and premium micro-interactions.
+                        </p>
+                        <ul class="service-bullets">
+                            <li>Visual-rich gallery views</li>
+                            <li>Dynamic hover states</li>
+                            <li>Interactive downloadable resume</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4: Landing Pages -->
+                    <div class="service-card reveal-item" id="serviceLanding">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 2v20" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <h3>Landing Pages</h3>
+                        <p>High-conversion marketing campaign pages. Designed with structured psychological layout
+                            flows, persistent CTAs, and optimized page speed to ensure maximum signup rates.</p>
+                        <ul class="service-bullets">
+                            <li>Optimized above-the-fold design</li>
+                            <li>Lead forms & booking integrations</li>
+                            <li>A/B testing-ready layouts</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 5: Website Redesign -->
+                    <div class="service-card reveal-item" id="serviceRedesign">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                            </svg>
+                        </div>
+                        <h3>Website Redesign</h3>
+                        <p>Give your slow, outdated website a state-of-the-art facelift. Enhance user experience,
+                            migrate to modern tech stacks, dramatically boost speed, and fix mobile responsiveness.</p>
+                        <ul class="service-bullets">
+                            <li>Detailed performance audits</li>
+                            <li>Brand style revitalization</li>
+                            <li>Zero downtime migrations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 6: College Societies & Niche -->
+                    <div class="service-card reveal-item" id="serviceNiche">
+                        <div class="service-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+                            </svg>
+                        </div>
+                        <h3>Societies & Niche Portals</h3>
+                        <p>Affordable, dynamic websites customized for student societies, clubs, non-profits, and
+                            communities. Integrated event systems, member directories, and application forms.</p>
+                        <ul class="service-bullets">
+                            <li>Events listings & booking</li>
+                            <li>Dynamic members catalog</li>
+                            <li>Social media live feeds</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section section-padding" id="portfolio">
+            <div class="container">
+                <div class="section-header text-center reveal-item">
+                    <span class="section-tag">Featured Works</span>
+                    <h2 class="section-title">Innovative Digital Products Built with Passion</h2>
+                    <p class="section-subtitle">Explore a selection of my latest freelance work and demo projects,
+                        designed to load instantly and convert visitors.</p>
+
+                    <!-- Portfolio Filters -->
+                    <div class="portfolio-filters" id="portfolioFilters">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="saas">SaaS & Apps</button>
+                        <button class="filter-btn" data-filter="ecom">E-Commerce</button>
+                        <button class="filter-btn" data-filter="landing">Landing Pages</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid" id="portfolioGrid">
+
+                    <!-- Project 1: SaaS Analytics -->
+                    <div class="portfolio-item reveal-item" data-category="saas">
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-container">
+                                <img src="images/portfolio_saas.svg" alt="SaaS Analytics Dashboard Mockup"
+                                    class="portfolio-img" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <a href="#contact" class="portfolio-link-icon" aria-label="View Project Details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M15 3h6v6" />
+                                            <path d="M10 14 21 3" />
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <span class="project-tag">SaaS / Dashboard</span>
+                                <h3>Financely: Wealth Analytics</h3>
+                                <p>A high-performance SaaS dashboard tracking financial assets in real-time. Features
+                                    custom interactive charts, dark mode by default, and complex state management.</p>
+                                <div class="project-tech">
+                                    <span>React</span>
+                                    <span>Chart.js</span>
+                                    <span>Tailwind CSS</span>
+                                    <span>Framer Motion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: E-Commerce Luxury -->
+                    <div class="portfolio-item reveal-item" data-category="ecom">
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-container">
+                                <img src="images/portfolio_ecom.svg" alt="Luxury E-Commerce Mockup"
+                                    class="portfolio-img" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <a href="#contact" class="portfolio-link-icon" aria-label="View Project Details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M15 3h6v6" />
+                                            <path d="M10 14 21 3" />
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <span class="project-tag">E-Commerce</span>
+                                <h3>Chronos: Luxury Timepieces</h3>
+                                <p>A highly elegant boutique online shop for premium Swiss watches. Features
+                                    pixel-perfect card layouts, interactive filtering, and customized smooth checkout
+                                    transitions.</p>
+                                <div class="project-tech">
+                                    <span>Next.js</span>
+                                    <span>NodeJS</span>
+                                    <span>Stripe API</span>
+                                    <span>Vanilla CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Agency Creative Landing -->
+                    <div class="portfolio-item reveal-item" data-category="landing">
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-container">
+                                <img src="images/portfolio_creative.svg" alt="Creative Portfolio Website Mockup"
+                                    class="portfolio-img" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <a href="#contact" class="portfolio-link-icon" aria-label="View Project Details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M15 3h6v6" />
+                                            <path d="M10 14 21 3" />
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <span class="project-tag">Creative Portfolio</span>
+                                <h3>Atmosphere: Architecture Studio</h3>
+                                <p>A highly immersive, visual portfolio for an elite architecture firm. Features
+                                    horizontal scrolling panels, high-res canvas rendering, and dynamic photo grid
+                                    transitions.</p>
+                                <div class="project-tech">
+                                    <span>HTML5</span>
+                                    <span>Vanilla JS</span>
+                                    <span>GSAP</span>
+                                    <span>Intersection Observer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: SaaS Landing Mobile Preview -->
+                    <div class="portfolio-item reveal-item" data-category="saas">
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-container">
+                                <img src="images/portfolio_app.svg" alt="SaaS Landing Mobile App Mockup"
+                                    class="portfolio-img" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <a href="#contact" class="portfolio-link-icon" aria-label="View Project Details">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M15 3h6v6" />
+                                            <path d="M10 14 21 3" />
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <span class="project-tag">Landing Page / App</span>
+                                <h3>Pulse: Health Companion App</h3>
+                                <p>A high-converting product page introducing a health tracking app. Includes visual
+                                    interactive mockups, budget sliders for calculator tools, and responsive device
+                                    renders.</p>
+                                <div class="project-tech">
+                                    <span>React</span>
+                                    <span>CSS Variables</span>
+                                    <span>A/B Optimized</span>
+                                    <span>Lottie Files</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Me Section -->
+        <section class="why-section section-padding" id="why-choose-me">
+            <div class="container">
+                <div class="grid grid-2 align-center">
+
+                    <!-- Left: Why Copy -->
+                    <div class="why-content reveal-item">
+                        <div class="section-tag">Why Choose Me</div>
+                        <h2 class="section-title">Designed to Perform, Built to Build Trust</h2>
+                        <p class="why-text">
+                            Many developers deliver websites that look good on their screen but crash on mobile, load
+                            painfully slow on average connections, or fail to gain SEO traffic.
+                        </p>
+                        <p class="why-text">
+                            I specialize in handcrafting custom code from the ground up, implementing high-standard
+                            coding styles that satisfy both Google's performance bots and your prospective clients.
+                        </p>
+
+                        <div class="why-metrics">
+                            <div class="metric-item">
+                                <div class="metric-top">
+                                    <span class="metric-label">Mobile Responsiveness</span>
+                                    <span class="metric-percentage">100%</span>
+                                </div>
+                                <div class="metric-bar-wrapper">
+                                    <div class="metric-bar" data-width="100%"></div>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-top">
+                                    <span class="metric-label">Page Load Speed Optimization</span>
+                                    <span class="metric-percentage">98%</span>
+                                </div>
+                                <div class="metric-bar-wrapper">
+                                    <div class="metric-bar" data-width="98%"></div>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-top">
+                                    <span class="metric-label">SEO Visibility Readiness</span>
+                                    <span class="metric-percentage">95%</span>
+                                </div>
+                                <div class="metric-bar-wrapper">
+                                    <div class="metric-bar" data-width="95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Core Advantages Grid -->
+                    <div class="why-grid-cards">
+
+                        <div class="why-card reveal-item">
+                            <div class="why-card-icon speed">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m12 14 4-4" />
+                                    <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+                                </svg>
+                            </div>
+                            <h4>Fast Performance</h4>
+                            <p>Optimized image layers, structured DOM nodes, and efficient script loading. A fast
+                                website holds user attention and ranks higher on search result pages.</p>
+                        </div>
+
+                        <div class="why-card reveal-item">
+                            <div class="why-card-icon responsive">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                                    <path d="M12 18h.01" />
+                                </svg>
+                            </div>
+                            <h4>Responsive UI/UX</h4>
+                            <p>Pixel-perfect layout adjustments from huge ultrawide displays to small hand-held
+                                smartphone screens. Uniform user experience on all browsers.</p>
+                        </div>
+
+                        <div class="why-card reveal-item">
+                            <div class="why-card-icon design">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                                    <path
+                                        d="M12 2C14.7614 2 17 6.47715 17 12C17 17.5228 14.7614 22 12 22C9.23858 22 7 17.5228 7 12C7 6.47715 9.23858 2 12 2Z" />
+                                    <path d="M2 12H22" />
+                                </svg>
+                            </div>
+                            <h4>Clean UI/UX Design</h4>
+                            <p>Stunning modern design layouts, gorgeous glassmorphism panels, readable high-end
+                                typography, and subtle, natural motion transitions.</p>
+                        </div>
+
+                        <div class="why-card reveal-item">
+                            <div class="why-card-icon support">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v5Z" />
+                                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-3" />
+                                </svg>
+                            </div>
+                            <h4>Professional Support</h4>
+                            <p>Direct communication with me—no agency middleman. Get swift code updates, routine
+                                check-ups, hosting administration support, and proactive guidance.</p>
+                        </div>
+
+                        <div class="why-card reveal-item">
+                            <div class="why-card-icon affordable">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" x2="12" y1="2" y2="22" />
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <h4>Affordable Solutions</h4>
+                            <p>Highly competitive custom freelance rates compared to large agencies. Flexible pricing
+                                packages that match startup funding or community budget constraints.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section section-padding" id="process">
+            <div class="container">
+                <div class="section-header text-center reveal-item">
+                    <span class="section-tag">Working Process</span>
+                    <h2 class="section-title">My 4-Step Professional Web Strategy</h2>
+                    <p class="section-subtitle">How I convert your concepts and business goals into high-impact, premium
+                        online platforms.</p>
+                </div>
+
+                <div class="process-timeline">
+
+                    <!-- Step 1: Discuss -->
+                    <div class="process-step reveal-item">
+                        <div class="step-number-box">
+                            <span class="step-num">01</span>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </div>
+                            <h3>1. Discuss</h3>
+                            <p>We jump on a consultation call or chat to map out your audience, service offerings,
+                                business objectives, visual preferences, and exact timeline details.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Design -->
+                    <div class="process-step reveal-item">
+                        <div class="step-number-box">
+                            <span class="step-num">02</span>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m12 3-1.912 5.886L4 9l5.886 1.912L12 17l1.912-5.886L20 9l-5.886-1.912z" />
+                                </svg>
+                            </div>
+                            <h3>2. Design</h3>
+                            <p>I build custom UI wireframes and visual high-fidelity design mockups. You get to inspect
+                                and refine typography, layout hierarchies, and brand palettes before we touch code.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Develop -->
+                    <div class="process-step reveal-item">
+                        <div class="step-number-box">
+                            <span class="step-num">03</span>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="m18 16 4-4-4-4" />
+                                    <path d="m6 8-4 4 4 4" />
+                                    <path d="m14.5 4-5 16" />
+                                </svg>
+                            </div>
+                            <h3>3. Develop</h3>
+                            <p>I transform approved designs into high-quality code. Implementing semantic HTML,
+                                optimized CSS grids, custom assets, and subtle, speed-optimized micro-interactions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Deliver -->
+                    <div class="process-step reveal-item">
+                        <div class="step-number-box">
+                            <span class="step-num">04</span>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
+                            <h3>4. Deliver</h3>
+                            <p>Rigorous responsive browser testing and speed optimizations are carried out. We launch
+                                the website live to your custom domain and handle automated backup integrations.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section class="contact-section section-padding" id="contact">
+            <div class="container">
+                <div class="grid grid-2">
+
+                    <!-- Left Side: Contact details -->
+                    <div class="contact-info-column reveal-item">
+                        <div class="section-tag">Get in Touch</div>
+                        <h2 class="section-title">Ready to Elevate Your Digital Footprint? Let's Talk!</h2>
+                        <p class="contact-sub">
+                            Have an exciting project idea, a business site that needs rebuilding, or just want to chat
+                            about potential custom developments? Fill out the brief project form or connect directly
+                            through my active social channels!
+                        </p>
+
+                        <div class="contact-methods">
+                            <!-- Email -->
+                            <div class="contact-method-item">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <span>Direct Email</span>
+                                    <a href="mailto:Princeshrivastav288@gmail.com" class="method-link"
+                                        id="emailContactLink">Princeshrivastav288@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <div class="contact-method-item">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <span>WhatsApp Quick Chat</span>
+                                    <a href="https://wa.me/7037834079" target="_blank" rel="noopener"
+                                        class="method-link" id="whatsappContactLink">7037834079</a>
+                                    <div>
+                                        <a href="https://wa.me/8109501329" target="_blank" rel="noopener"
+                                            class="method-link" id="whatsappContactLink2">8109501329</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LinkedIn -->
+                            <div class="contact-method-item">
+                                <div class="method-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect width="4" height="12" x="2" y="9" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                </div>
+                                <div class="method-details">
+                                    <span>Professional Network</span>
+                                    <a href="https://www.linkedin.com/in/princeshrivastav288" target="_blank"
+                                        rel="noopener" class="method-link"
+                                        id="linkedinContactLink">www.linkedin.com/in/princeshrivastav288</a>
+                                    <a href="https://www.linkedin.com/in/shubh-seth-953967371/" target="_blank"
+                                        rel="noopener" class="method-link"
+                                        id="linkedinContactLink2">www.linkedin.com/in/shubh-seth-953967371/</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust Badge in Contact -->
+                        <div class="contact-trust-card">
+                            <span class="trust-title">Average Response Rate</span>
+                            <p>I generally read and respond to high-priority client proposals in less than 4 business
+                                hours.
+                                Thanks for your patience and I look forward to connecting!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: High-converting Glassmorphic Form -->
+                    <div class="contact-form-column reveal-item">
+                        <div class="form-container-card">
+                            <h3>Let's Start Your Project</h3>
+                            <p>Fill out this form and receive a custom development proposal within 24 hours.</p>
+
+                            <form id="projectContactForm" class="contact-form" autocomplete="on">
+
+                                <div class="form-group">
+                                    <label for="clientName">Your Name *</label>
+                                    <input type="text" id="clientName" name="name" placeholder="e.g. John Doe" required>
+                                </div>
+
+                                <div class="form-group grid grid-2-form">
+                                    <div>
+                                        <label for="clientEmail">Email Address *</label>
+                                        <input type="email" id="clientEmail" name="email"
+                                            placeholder="e.g. john@company.com" required>
+                                    </div>
+                                    <div>
+                                        <label for="clientPhone">Phone Number *</label>
+                                        <input type="tel" id="clientPhone" name="phone"
+                                            placeholder="e.g. +91 98765 43210" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="projectType">Project Type *</label>
+                                    <select id="projectType" name="projectType" required>
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option value="business">Business Website</option>
+                                        <option value="saas">SaaS / Web App</option>
+                                        <option value="portfolio">Personal Portfolio</option>
+                                        <option value="landing">High-Conversion Landing Page</option>
+                                        <option value="redesign">Website Redesign & Speed Up</option>
+                                        <option value="other">Other / Custom Request</option>
+                                    </select>
+                                </div>
+
+                                <!-- Dynamic Budget Slider (Conversion feature) -->
+                                <div class="form-group">
+                                    <div class="slider-labels">
+                                        <label for="projectBudget">Estimated Budget: <span id="budgetValue"
+                                                class="highlight-text">₹3,500</span></label>
+                                    </div>
+                                    <input type="range" id="projectBudget" name="budget" min="1500" max="10000"
+                                        step="500" value="3500" class="budget-slider">
+                                    <div class="slider-bounds">
+                                        <span>₹1500</span>
+                                        <span>₹10,000+</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="clientMessage">Project Details *</label>
+                                    <textarea id="clientMessage" name="message" rows="4"
+                                        placeholder="Briefly describe what you're looking to build, your audience, and any features you need..."
+                                        required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block" id="formSubmitBtn">
+                                    <span>Send Proposal Request</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="22" x2="11" y1="2" y2="13" />
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                    </svg>
+                                </button>
+                            </form>
+
+                            <!-- Success State Template (hidden by default) -->
+                            <div class="form-success-message" id="formSuccessMessage">
+                                <div class="success-icon-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="m9 12 2 2 4-4" />
+                                    </svg>
+                                </div>
+                                <h4>Proposal Request Sent!</h4>
+                                <p>Thank you for reaching out. I've received your project details and will email you
+                                    with a structured draft proposal in under 4 hours.</p>
+                                <button type="button" class="btn btn-secondary btn-sm" id="btnResetForm">Send another
+                                    request</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="cursor-follow" id="cursorFollow" aria-hidden="true"></div>
+
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Col 1: Brand -->
+                <div class="footer-col brand-col">
+                    <a href="#hero" class="footer-logo">
+                        <span class="logo-accent">Code</span><span class="logo-accent">Mint</span>
+                    </a>
+                    <p class="footer-desc">
+                        Designing and handcrafting premium digital experiences that turn visitors into loyal clients.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                <path d="M9 18c-4.51 2-5-2-7-2" />
+                            </svg></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect width="4" height="12" x="2" y="9" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                            </svg></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div class="footer-col links-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Featured Projects</a></li>
+                        <li><a href="#why-choose-me">Why Choose Me</a></li>
+                        <li><a href="#process">Working Process</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div class="footer-col links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Frontend Dev</a></li>
+                        <li><a href="#services">Business Sites</a></li>
+                        <li><a href="#services">Portfolio Pages</a></li>
+                        <li><a href="#services">Landing Pages</a></li>
+                        <li><a href="#services">Website Redesign</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div class="footer-col newsletter-col">
+                    <h4>Subscribe to Tech Insights</h4>
+                    <p>Get monthly tips on UI trends, page speed optimizations, and digital startup strategy.</p>
+                    <form class="footer-newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your Email Address" aria-label="Newsletter email" required>
+                        <button type="submit" aria-label="Subscribe button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m5 12 7-7 7 7" />
+                                <path d="M12 5v14" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 CodeMint. All Rights Reserved and Handcrafted with passion in custom with HTML/CSS/JS.
+                </p>
+                <div class="footer-bottom-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back To Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
+        </svg>
+    </button>
+
+    <!-- Local Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="supabase-config.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>

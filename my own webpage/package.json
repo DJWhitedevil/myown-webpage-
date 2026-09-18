@@ -1,0 +1,9 @@
+{
+  "name": "my-own-webpage-site",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^7.6.0",
+    "nodemailer": "^9.0.5"
+  }
+}
