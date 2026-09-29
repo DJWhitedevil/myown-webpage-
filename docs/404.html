@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting... | CodeMint</title>
+    <!-- 
+        Smart redirect for GitHub Pages:
+        Handles Supabase auth redirects that come without .html extension
+        e.g. /reset-password?... → /reset-password.html?...
+    -->
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+
+            // Map of known pages that need .html added
+            var knownPages = [
+                '/myown-webpage-/reset-password',
+                '/myown-webpage-/login',
+                '/myown-webpage-/privacy-policy',
+                '/myown-webpage-/terms-of-service',
+            ];
+
+            // If path matches a known page without .html, redirect to .html version
+            for (var i = 0; i < knownPages.length; i++) {
+                if (path === knownPages[i]) {
+                    window.location.replace(path + '.html' + search + hash);
+                    return;
+                }
+            }
+
+            // Otherwise redirect to homepage after 3 seconds
+            setTimeout(function () {
+                window.location.href = '/myown-webpage-/';
+            }, 3000);
+        })();
+    </script>
+</head>
+<body style="font-family: 'Nunito', sans-serif; background: #EDE7DE; display: grid; place-items: center; height: 100vh; margin: 0; color: #3a3328;">
+    <div style="text-align: center;">
+        <h1 style="font-size: 3rem; font-weight: 800; color: #aa8fbd;">Redirecting...</h1>
+        <p style="margin-top: 1rem; color: #746b61;">Taking you to the right page.</p>
+    </div>
+</body>
+</html>
