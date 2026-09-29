@@ -562,56 +562,46 @@
                 return;
             }
 
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 15000);
+            // Insert directly into Supabase — no backend server needed
+            try {
+                const { error: dbError } = await supabase
+                    .from('leads')
+                    .insert([{
+                        user_id: session.user.id,
+                        name,
+                        email,
+                        phone,
+                        project_type: projectType,
+                        message
+                    }]);
 
-            fetch('/api/lead', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session.access_token}`
-                },
-                body: JSON.stringify(payload),
-                signal: controller.signal
-            }).then(async (res) => {
-                clearTimeout(timeout);
-                if (res.ok) {
-                    // Show success state
-                    contactForm.classList.add('fading');
-                    contactForm.style.opacity = '0';
-                    contactForm.style.transform = 'scale(0.97)';
+                if (dbError) throw new Error(dbError.message || 'Could not submit your request.');
 
-                    setTimeout(() => {
-                        contactForm.style.display = 'none';
-                        formSuccess.style.display = 'flex';
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = DEFAULT_SUBMIT_HTML;
+                // Show success state
+                contactForm.classList.add('fading');
+                contactForm.style.opacity = '0';
+                contactForm.style.transform = 'scale(0.97)';
 
-                        // Reset the form fields
-                        contactForm.reset();
-                        if (budgetSlider && budgetDisplay) {
-                            budgetSlider.value = 3500;
-                            budgetDisplay.textContent = '₹3,500';
-                            budgetSlider.dispatchEvent(new Event('input'));
-                        }
-                    }, 350);
-                } else {
-                    const text = await res.text().catch(() => 'Server error');
-                    alert('Failed to send request: ' + text);
+                setTimeout(() => {
+                    contactForm.style.display = 'none';
+                    formSuccess.style.display = 'flex';
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = DEFAULT_SUBMIT_HTML;
-                }
-            }).catch(err => {
-                clearTimeout(timeout);
-                if (err.name === 'AbortError') {
-                    alert('Request timed out. Please try again.');
-                } else {
-                    alert('Network error. Please check your connection and try again.');
-                    console.error('submit error:', err);
-                }
+
+                    // Reset the form fields
+                    contactForm.reset();
+                    if (budgetSlider && budgetDisplay) {
+                        budgetSlider.value = 3500;
+                        budgetDisplay.textContent = '₹3,500';
+                        budgetSlider.dispatchEvent(new Event('input'));
+                    }
+                }, 350);
+
+            } catch (err) {
+                alert('Failed to send request: ' + (err.message || 'Please try again.'));
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = DEFAULT_SUBMIT_HTML;
-            });
+            }
         });
 
         if (btnResetForm) {
