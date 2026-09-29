@@ -459,7 +459,7 @@
         // A browser flag is not authentication. Only an active Supabase
         // session may unlock the portfolio.
         supabase.auth.getSession().then(({ data: { session } }) => {
-            if (session) window.location.replace('/');
+            if (session) window.location.replace('https://djwhitedevil.github.io/myown-webpage-/');
         });
 
         const loginCard    = document.getElementById('loginCard');
@@ -516,7 +516,7 @@
                     // Fade out then redirect
                     document.querySelector('.page').style.transition = 'opacity 0.4s ease';
                     document.querySelector('.page').style.opacity    = '0';
-                    setTimeout(() => window.location.replace('/'), 420);
+                    setTimeout(() => window.location.replace('https://djwhitedevil.github.io/myown-webpage-/'), 420);
                 } else {
                     throw new Error(error.message || 'Invalid credentials.');
                 }
