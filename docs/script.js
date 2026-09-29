@@ -577,6 +577,16 @@
 
                 if (dbError) throw new Error(dbError.message || 'Could not submit your request.');
 
+                // Send email notification via Formspree
+                fetch('https://formspree.io/f/mrpbjpnn', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }).catch(e => console.error('Formspree error:', e));
+
                 // Show success state
                 contactForm.classList.add('fading');
                 contactForm.style.opacity = '0';
