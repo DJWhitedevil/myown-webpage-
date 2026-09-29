@@ -2,8 +2,8 @@
 // Find these in Supabase Dashboard -> Project Settings -> API.
 // Never put an `sb_secret_...`, `service_role`, or other secret key in this file.
 window.CodeMintSupabase = {
-    url: 'https://gqyelvpyccrlzwzkrqzv.supabase.co',
-    publishableKey: 'sb_publishable_jhjXxCkLnLgtBVHfP8TyLg_f8pAp9pW'
+    url: 'https://rpejrfnjhnayidzcvdcr.supabase.co',
+    publishableKey: 'sb_publishable_nimgpRBlUB3nwacQtaADww_sGzNsNfc'
 };
 
 if (window.supabase &&
